@@ -1,0 +1,73 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "title": "молоко",
+      "description": "вкусное"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "title": "алкоголь",
+      "description": "бухич"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "title": "овощи",
+      "description": "свежие"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+      "title": "бакалея",
+      "description": "крупы и тд"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "title": "сыр",
+      "description": "желтый сыр с дырочками",
+      "preview_image": "",
+      "category": 1,
+      "price": 50,
+      "create_date": "2024-01-02T13:08:18Z",
+      "update_date": "2024-01-02T13:08:34Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "title": "сливки",
+      "description": "сочные, нежные",
+      "preview_image": "",
+      "category": 1,
+      "price": 12,
+      "create_date": null,
+      "update_date": null
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "title": "Jack Daniels",
+      "description": "виски",
+      "preview_image": "",
+      "category": 2,
+      "price": 2900,
+      "create_date": null,
+      "update_date": null
+    }
+  }
+]
