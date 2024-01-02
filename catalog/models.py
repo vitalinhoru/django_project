@@ -12,8 +12,8 @@ class Category(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'каталог'
-        verbose_name_plural = 'каталоги'
+        verbose_name = 'категория'
+        verbose_name_plural = 'категории'
 
 
 class Product(models.Model):
