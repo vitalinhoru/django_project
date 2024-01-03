@@ -15,7 +15,7 @@
                          src="{% mediapath object.photo %}"
                          alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{ object.name|title }}</h5>
+                        <h5 class="card-title">{{ object.title|title }}</h5>
                         <p class="card-text">{{ object.description|truncatewords:4 }}</p>
                         <a href="{% url 'catalog:product' object.pk %}" class="btn btn-primary">Подробнее</a>
                     </div>
