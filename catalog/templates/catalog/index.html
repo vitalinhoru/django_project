@@ -12,11 +12,12 @@
             <div class="col-md-4">
                 <div class="card mb-4" style="width: 18rem;">
                     <img class="card-img-top"
-                         src="{% mediapath object.photo %}"
+                         src="{% mediapath object.preview_image %}"
                          alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ object.title|title }}</h5>
                         <p class="card-text">{{ object.description|truncatewords:4 }}</p>
+                        <p class="card-text">{{ object.category }}</p>
                         <a href="{% url 'catalog:product' object.pk %}" class="btn btn-primary">Подробнее</a>
                     </div>
                 </div>
