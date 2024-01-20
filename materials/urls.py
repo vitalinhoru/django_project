@@ -1,8 +1,6 @@
 from django.urls import path
 from materials.apps import MaterialsConfig
-from materials.views import BlogCreateView, BlogListView, BlogDetailView, BlogUpdateView, BlogDeleteView, image_view
-from django.conf import settings
-from django.conf.urls.static import static
+from materials.views import BlogCreateView, BlogListView, BlogDetailView, BlogUpdateView, BlogDeleteView
 
 app_name = MaterialsConfig.name
 
@@ -12,9 +10,4 @@ urlpatterns = [
     path('view/<int:pk>/', BlogDetailView.as_view(), name='view'),
     path('edit/<int:pk>/', BlogUpdateView.as_view(), name='edit'),
     path('delete/<int:pk>/', BlogDeleteView.as_view(), name='delete'),
-
-    path('', image_view, name='image_upload'),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

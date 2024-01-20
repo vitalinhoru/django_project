@@ -16,9 +16,13 @@
                             {{ object.body }}
                         </p>
                     </div>
-                    <img class="card-img-top"
-                            src="{% mediapath object.preview_image %}"
-                         alt="Card image cap">
+                    {#                    <img class="card-img-top"#}
+                    {#                            src="{% mediapath object.preview_image %}"#}
+                    {#                         alt="Card image cap">#}
+                    <div class="col-6">
+                        <img src="/media/{{ object.preview_image }}"/>
+                    </div>
+
                     <div class="card-footer">
                         Просмотры: {{ object.views_count }}
                     </div>

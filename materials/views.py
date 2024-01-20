@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from pytils.translit import slugify
@@ -20,18 +19,6 @@ class BlogCreateView(CreateView):
         return super().form_valid(form)
 
 
-def image_view(request):
-    if request.method == 'POST':
-        form = BlogCreateView(request.POST, request.FILES)
-
-        # if form.is_valid():
-        #     form.save()
-        #     return redirect('success')
-    else:
-        form = BlogCreateView()
-    return render(request, 'materials/blog_form.html', {'form': form})
-
-
 class BlogListView(ListView):
     model = Blog
 
@@ -48,7 +35,7 @@ class BlogDetailView(DetailView):
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    fields = ('title', 'body',)
+    fields = ('title', 'body', 'preview_image', 'is_published')
 
     def form_valid(self, form):
         if form.is_valid():
