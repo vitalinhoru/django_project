@@ -3,6 +3,7 @@ asttokens==2.4.1
 colorama==0.4.6
 decorator==5.1.1
 Django==5.0
+django-bootstrap5==23.4
 executing==2.0.1
 ipython==8.19.0
 jedi==0.19.1
