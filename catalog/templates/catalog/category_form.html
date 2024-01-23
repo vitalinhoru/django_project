@@ -9,10 +9,6 @@
                         <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form.as_p }}
-                        <div class="card">
-                            <p>Не нашли нужную категорию?</p>
-                            <a href="{% url 'catalog:category_create' %}">Добавить запись</a>
-                        </div>
                             <button type="submit" class="btn btn-success">
                                 {% if object %}
                                     Сохранить

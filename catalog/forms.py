@@ -1,5 +1,5 @@
 from django import forms
-from catalog.models import Product
+from catalog.models import Product, Category
 
 
 class StyleFormMixin:
@@ -23,3 +23,10 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
                 raise forms.ValidationError('Недопустимое имя продукта.')
 
         return cleaned_data
+
+
+class CategoryForm(StyleFormMixin, forms.ModelForm):
+
+    class Meta:
+        model = Category
+        fields = '__all__'

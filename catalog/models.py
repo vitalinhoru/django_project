@@ -32,3 +32,10 @@ class Product(models.Model):
         verbose_name = 'продукт'
         verbose_name_plural = 'продукты'
         ordering = ('-create_date',)
+
+
+class Version(models.Model):
+    title = models.ForeignKey(Product, verbose_name='продукт', on_delete=models.CASCADE)
+    version_number = models.IntegerField(verbose_name='номер версии')
+    version_name = models.CharField(max_length=100, verbose_name='название версии')
+    is_active = models.BooleanField(default=True, verbose_name='признак текущей версии')
