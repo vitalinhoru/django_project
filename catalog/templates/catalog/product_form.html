@@ -10,7 +10,11 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">
-                                    Добавление продукта
+                                    {% if object %}
+                                        Редактировать продукт
+                                    {% else %}
+                                        Добавить продукт
+                                    {% endif %}                                    
                                 </h3>
                             </div>
                             <div class="card-body">
