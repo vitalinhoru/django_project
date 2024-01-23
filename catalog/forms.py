@@ -1,5 +1,5 @@
 from django import forms
-from catalog.models import Product, Category
+from catalog.models import Product, Category, Version
 
 
 class StyleFormMixin:
@@ -29,4 +29,11 @@ class CategoryForm(StyleFormMixin, forms.ModelForm):
 
     class Meta:
         model = Category
+        fields = '__all__'
+
+
+class VersionForm(StyleFormMixin, forms.ModelForm):
+
+    class Meta:
+        model = Version
         fields = '__all__'

@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">Каталог</h1>
+        <h1 class="display-4">КАТАЛОГ</h1>
     </div>
 
     <div class="col-12 mb-5">
@@ -19,9 +19,16 @@
                              src="{% mediapath object.preview_image %}"
                              alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{ object.title|title }}</h5>
+                            <h5 class="card-title">{{ object.title }}</h5>
                             <p class="card-text">{{ object.description|truncatewords:4 }}</p>
-                            <p class="card-text">{{ object.category }}</p>
+                            <p class="card-text">Категория: {{ object.category }}</p>
+
+                            {% for version in object.version_set.all %}
+                                {% if version.is_active %}
+                                    <p>Актуальная версия: {{ version.version_number }}<p>
+                                {% endif %}
+                            {% endfor %}
+
                             <a href="{% url 'catalog:product' object.pk %}"
                                class="btn btn-sm btn-outline-secondary">View</a>
                             <a href="{% url 'catalog:update' object.pk %}"
