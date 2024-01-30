@@ -1,73 +1,254 @@
 [
   {
     "model": "catalog.category",
+    "pk": 41,
+    "fields": {
+      "title": "Бакалея",
+      "description": "Крупы"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 42,
+    "fields": {
+      "title": "Алкоголь",
+      "description": "пиво, водка"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 43,
+    "fields": {
+      "title": "Мясо",
+      "description": "говядина, свинина"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 44,
+    "fields": {
+      "title": "Химия",
+      "description": "средство для чистки унитаза"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 45,
+    "fields": {
+      "title": "Vegetables",
+      "description": null
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 46,
+    "fields": {
+      "title": "Fruits",
+      "description": null
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 47,
+    "fields": {
+      "title": "Яйца",
+      "description": "Желтые и белые"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 48,
+    "fields": {
+      "title": "Яйца",
+      "description": "Желтые и белые"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 49,
+    "fields": {
+      "title": "Горошинки и фасолинки",
+      "description": "крупы одним словом"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 50,
+    "fields": {
+      "title": "ыва",
+      "description": "ыва"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 31,
+    "fields": {
+      "title": "Бананы",
+      "description": "Бразильские",
+      "preview_image": "",
+      "category": 46,
+      "price": 150,
+      "create_date": "2024-01-23T15:11:18.542Z",
+      "update_date": "2024-01-23T15:11:18.542Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 32,
+    "fields": {
+      "title": "Яблоки",
+      "description": "Зеленые",
+      "preview_image": "",
+      "category": 46,
+      "price": 200,
+      "create_date": "2024-01-23T16:08:45.235Z",
+      "update_date": "2024-01-23T16:08:45.235Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 33,
+    "fields": {
+      "title": "Молоко",
+      "description": "пискаревское",
+      "preview_image": "products/28084f54cb0ac38ab531c69c558a.webp",
+      "category": 47,
+      "price": 70,
+      "create_date": "2024-01-23T19:21:44.771Z",
+      "update_date": "2024-01-23T19:21:44.771Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 34,
+    "fields": {
+      "title": "Мармелад",
+      "description": "яблочный",
+      "preview_image": "products/ozyorskij-suvenir-marmelad-yablochnyj-100-naturalnyj-produkt-320-g.jpg",
+      "category": 46,
+      "price": 200,
+      "create_date": "2024-01-23T19:27:07.454Z",
+      "update_date": "2024-01-23T19:27:07.454Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 35,
+    "fields": {
+      "title": "Шампунть",
+      "description": "шаума, перхоть",
+      "preview_image": "",
+      "category": 44,
+      "price": 44,
+      "create_date": "2024-01-23T19:30:04.309Z",
+      "update_date": "2024-01-24T15:45:57.958Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 36,
+    "fields": {
+      "title": "Укроп",
+      "description": "душистый",
+      "preview_image": "",
+      "category": 45,
+      "price": 50,
+      "create_date": "2024-01-24T15:49:39.348Z",
+      "update_date": "2024-01-24T15:49:39.348Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 37,
+    "fields": {
+      "title": "петрушка",
+      "description": "квакушка",
+      "preview_image": "",
+      "category": 45,
+      "price": 34,
+      "create_date": "2024-01-24T16:01:56.317Z",
+      "update_date": "2024-01-24T16:01:56.318Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 38,
+    "fields": {
+      "title": "барсучок",
+      "description": "хорошенький",
+      "preview_image": "",
+      "category": 41,
+      "price": 10000,
+      "create_date": "2024-01-24T16:03:55.520Z",
+      "update_date": "2024-01-24T16:03:55.520Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 39,
+    "fields": {
+      "title": "кошечка",
+      "description": "хаврошечка",
+      "preview_image": "",
+      "category": 42,
+      "price": 33,
+      "create_date": "2024-01-24T16:07:33.025Z",
+      "update_date": "2024-01-24T16:07:33.025Z"
+    }
+  },
+  {
+    "model": "catalog.version",
     "pk": 1,
     "fields": {
-      "title": "молоко",
-      "description": "вкусное"
+      "title": "новый",
+      "version_number": 1,
+      "version_name": "первая",
+      "is_active": true,
+      "product": 31
     }
   },
   {
-    "model": "catalog.category",
+    "model": "catalog.version",
     "pk": 2,
     "fields": {
-      "title": "алкоголь",
-      "description": "бухич"
+      "title": "Парампампам",
+      "version_number": 2,
+      "version_name": "вторая",
+      "is_active": false,
+      "product": 32
     }
   },
   {
-    "model": "catalog.category",
+    "model": "catalog.version",
     "pk": 3,
     "fields": {
-      "title": "овощи",
-      "description": "свежие"
+      "title": "рара",
+      "version_number": 3,
+      "version_name": "третья",
+      "is_active": false,
+      "product": 32
     }
   },
   {
-    "model": "catalog.category",
+    "model": "catalog.version",
     "pk": 4,
     "fields": {
-      "title": "бакалея",
-      "description": "крупы и тд"
+      "title": "уцкцук",
+      "version_number": 4,
+      "version_name": "четре",
+      "is_active": true,
+      "product": 32
     }
   },
   {
-    "model": "catalog.product",
-    "pk": 1,
+    "model": "catalog.version",
+    "pk": 5,
     "fields": {
-      "title": "сыр",
-      "description": "желтый сыр с дырочками",
-      "preview_image": "",
-      "category": 1,
-      "price": 50,
-      "create_date": "2024-01-02T13:08:18Z",
-      "update_date": "2024-01-02T13:08:34Z"
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 2,
-    "fields": {
-      "title": "сливки",
-      "description": "сочные, нежные",
-      "preview_image": "",
-      "category": 1,
-      "price": 12,
-      "create_date": null,
-      "update_date": null
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 3,
-    "fields": {
-      "title": "Jack Daniels",
-      "description": "виски",
-      "preview_image": "",
-      "category": 2,
-      "price": 2900,
-      "create_date": null,
-      "update_date": null
+      "title": "новый",
+      "version_number": 2,
+      "version_name": "первая",
+      "is_active": true,
+      "product": 35
     }
   }
 ]
