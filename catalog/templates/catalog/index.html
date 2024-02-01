@@ -5,11 +5,11 @@
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h1 class="display-4">КАТАЛОГ</h1>
     </div>
-
-    <div class="col-3 mb-5">
-        <a class="btn btn-outline-primary" href="{% url 'catalog:create' %}">Добавить запись</a>
-    </div>
-
+    {% if user.is_authenticated %}
+        <div class="col-3 mb-5">
+            <a class="btn btn-outline-primary" href="{% url 'catalog:create' %}">Добавить запись</a>
+        </div>
+    {% endif %}
     <div class="container">
         <div class="row">
             {% for object in object_list %}
