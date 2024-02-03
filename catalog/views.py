@@ -1,4 +1,5 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -7,14 +8,26 @@ from catalog.forms import ProductForm, CategoryForm, VersionForm
 from catalog.models import Product, Category, Version
 
 
-class ProductListView(ListView):
+@login_required
+@permission_required('catalog.view_product')
+def contacts(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        message = request.POST.get('message')
+        print(f'{name}, {phone}: {message}')
+    return render(request, 'catalog/contacts.html')
+
+
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = 'catalog/index.html'
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
+    permission_required = 'catalog.add_product'
     success_url = reverse_lazy('catalog:index')
 
     def form_valid(self, form):
@@ -22,21 +35,20 @@ class ProductCreateView(CreateView):
         return super().form_valid(form)
 
 
-class CategoryCreateView(CreateView):
-    model = Category
-    form_class = CategoryForm
-    success_url = reverse_lazy('catalog:create')
-
-
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'catalog/product_detail.html'
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
+    permission_required = 'catalog.change_product'
     success_url = reverse_lazy('catalog:index')
+
+    def has_permission(self):
+        product = self.get_object()
+        return product.has_permission_to_change(self.request.user)
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
@@ -58,15 +70,16 @@ class ProductUpdateView(UpdateView):
         return super().form_valid(form)
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('catalog:index')
 
+    def test_func(self):
+        return self.request.user.is_superuser
 
-def contacts(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        message = request.POST.get('message')
-        print(f'{name}, {phone}: {message}')
-    return render(request, 'catalog/contacts.html')
+
+class CategoryCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    model = Category
+    form_class = CategoryForm
+    permission_required = 'catalog.add_category'
+    success_url = reverse_lazy('catalog:create')

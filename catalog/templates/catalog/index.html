@@ -10,39 +10,49 @@
             <a class="btn btn-outline-primary" href="{% url 'catalog:create' %}">Добавить запись</a>
         </div>
     {% endif %}
+
+
     <div class="container">
         <div class="row">
             {% for object in object_list %}
-                <div class="col-md-3">
-                    <div class="card mb-3" style="width: 15rem;">
-                        {% if object.preview_image %}
-                            <img src="{% mediapath object.preview_image %}" class="img-fluid" alt="{{ object.title }}">
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ object.title }}</h5>
-                            <p class="card-text">{{ object.description|truncatewords:4 }}</p>
-                            <p class="card-text">Категория: {{ object.category }}</p>
-
-                            {% for version in object.version_set.all %}
-                                {% if version.is_active %}
-                                    <p>Актуальная версия: {{ version.version_number }}<p>
-                                {% endif %}
-                            {% endfor %}
-
-                            <a href="{% url 'catalog:product' object.pk %}"
-                               class="btn btn-sm btn-outline-secondary">View</a>
-                            {% if user.is_authenticated %}
-                                <a href="{% url 'catalog:update' object.pk %}"
-                                   class="btn btn-sm btn-outline-secondary">Edit</a>
-                                <a href="{% url 'catalog:delete' object.pk %}"
-                                   class="btn btn-sm btn-outline-danger">Delete</a>
+                {% if object.is_published %}
+                    <div class="col-md-3">
+                        <div class="card mb-3" style="width: 15rem;">
+                            {% if object.preview_image %}
+                                <img src="{% mediapath object.preview_image %}" class="img-fluid"
+                                     alt="{{ object.title }}">
                             {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ object.title }}</h5>
+                                <p class="card-text">{{ object.description|truncatewords:4 }}</p>
+                                <p class="card-text">Категория: {{ object.category }}</p>
 
+                                {% for version in object.version_set.all %}
+                                    {% if version.is_active %}
+                                        <p>Актуальная версия: {{ version.version_number }}<p>
+                                    {% endif %}
+                                {% endfor %}
+
+                                <a href="{% url 'catalog:product' object.pk %}"
+                                   class="btn btn-sm btn-outline-secondary">View</a>
+                                {% if user.is_authenticated %}
+                                    {% if object.user == request.user or perms.catalog.change_product %}
+                                        <a href="{% url 'catalog:update' object.pk %}"
+                                           class="btn btn-sm btn-outline-secondary">Edit</a>
+                                    {% endif %}
+                                    {% if user.is_superuser %}
+                                        <a href="{% url 'catalog:delete' object.pk %}"
+                                           class="btn btn-sm btn-outline-danger">Delete</a>
+                                    {% endif %}
+                                {% endif %}
+
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
         </div>
     </div>
+
 
 {% endblock %}

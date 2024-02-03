@@ -2,6 +2,7 @@ import random
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import send_mail
@@ -24,12 +25,12 @@ class RegisterView(CreateView):
 
     def form_valid(self, form):
         new_user = form.save()
-        # Создаем и сохраняем токен подтверждения
+
         token = get_random_string(length=50)
         new_user.verification_token = token
         new_user.save()
 
-        # Отправляем письмо с подтверждением
+
         current_site = get_current_site(self.request)
         send_mail(
             subject='Подтверждение аккаунта',
@@ -54,7 +55,7 @@ class VerifyEmailView(View):
             return render(request, 'users/register_failed.html')  # Покажем сообщение об ошибке
 
 
-class ProfileView(UpdateView):
+class ProfileView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserProfileForm
     success_url = reverse_lazy('users:profile')
@@ -65,6 +66,7 @@ class ProfileView(UpdateView):
 
 class CustomPasswordResetView(PasswordResetView):
     template_name = 'users/password_reset.html'
+
     def form_valid(self, form):
         new_password = ''.join([str(random.randint(0, 9)) for _ in range(12)])
         email = form.cleaned_data['email']

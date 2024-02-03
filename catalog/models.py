@@ -27,13 +27,23 @@ class Product(models.Model):
     update_date = models.DateTimeField(auto_now=True, verbose_name='дата изменения')
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, default=None, null=True, verbose_name='пользователь')
 
+    is_published = models.BooleanField(default=False, verbose_name='признак публикации')
+
     def __str__(self):
         return self.title
 
     class Meta:
+        permissions = [
+            ('set_published', 'Может публиковать'),
+            ('change_product_description', 'Моет менять описание'),
+            ('change_product_category', 'Может менять категорию продукта'),
+        ]
         verbose_name = 'продукт'
         verbose_name_plural = 'продукты'
         ordering = ('-create_date',)
+
+    def has_permission_to_change(self, user):
+        return self.user == user
 
 
 class Version(models.Model):

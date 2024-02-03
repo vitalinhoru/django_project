@@ -13,7 +13,7 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ('title', 'description', 'category', 'price', 'preview_image',)
+        fields = ('title', 'description', 'category', 'price', 'preview_image', 'is_published')
 
     def clean_title(self):
         cleaned_data = self.cleaned_data['title']
