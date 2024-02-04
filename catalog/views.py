@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from catalog.forms import ProductForm, CategoryForm, VersionForm
 from catalog.models import Product, Category, Version
+from catalog.services import get_cached_categories
 
 
 @login_required
@@ -83,3 +84,15 @@ class CategoryCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView
     form_class = CategoryForm
     permission_required = 'catalog.add_category'
     success_url = reverse_lazy('catalog:create')
+
+
+# class CategoryListView(LoginRequiredMixin, ListView):
+#     model = Category
+#     template_name = 'catalog/category_list.html'
+
+def category_list_view(request):
+    context = {
+        'object_list': get_cached_categories(),
+        'title': 'Все категории'
+    }
+    return render(request, 'catalog/category_list.html', context)
